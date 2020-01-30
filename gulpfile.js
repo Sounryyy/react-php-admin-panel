@@ -1,5 +1,6 @@
 const gulp = require("gulp");
 const webpackStream = require("webpack-stream");
+const sass = require("gulp-sass");
 
 const dist = '/Applications/MAMP/htdocs/react-admin/admin';
 const webpackConfig = {
@@ -43,4 +44,10 @@ gulp.task("build-js", () => {
    return gulp.src("./app/src/main.js")
        .pipe(webpackStream(webpackConfig))
        .pipe(gulp.dest(dist))
+});
+
+gulp.task("build-sass", () => {
+    return gulp.src("./app/scss/style.scss")
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest(dist))
 });
