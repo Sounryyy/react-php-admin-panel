@@ -6,7 +6,7 @@ const dist = '/Applications/MAMP/htdocs/react-admin/admin';
 const webpackConfig = {
     mode: 'development',
     output: {
-        filename: 'script.js'
+        filename: 'bundle.js'
     },
     watch: false,
     devtool: "source-map",
@@ -72,4 +72,4 @@ gulp.task("watch", () => {
 
 gulp.task("build", gulp.parallel("copy-html", "copy-assets", "copy-api", "build-sass", "build-js"));
 
-gulp.task("default", gulp.parallel("watch", "build"));
+gulp.task("default", gulp.parallel("build", "watch"));
